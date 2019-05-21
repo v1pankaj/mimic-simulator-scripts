@@ -1,0 +1,5 @@
+for {set agenti $START_I} {$agenti <= $END_I} {incr agenti}
+{
+mimic agent assign $agenti
+mimic agent start
+}

@@ -1,0 +1,27 @@
+set agenti 21002
+
+for {set i} {$i <= 1} {incr i} {
+
+# mainitaining trap rate of 5 traps/ sec
+for {set agentc $agenti} {$agentc <= [expr $agenti + 5] } {incr agentc} {
+
+if {$agentc == 26001} {
+ set agentc 26001
+ break
+ }
+
+mimic agent assign $agentc
+set trap_oid "coldStart"
+mimic value set $trap_oid 0 r 1
+mimic value set $trap_oid 0 tu 1
+mimic value set $trap_oid 0 c s
+
+
+}
+
+set agenti $agentc
+
+# Gap of 1 secs
+after 1000
+
+}
